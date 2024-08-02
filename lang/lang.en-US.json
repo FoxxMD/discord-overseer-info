@@ -175,6 +175,16 @@
             "notImplemented": {
                 "description": "This feature has not been implemented yet!",
                 "color": "{{COM:colors.warning}}"
+            },
+            "caughtError": {
+                "description": "Something went wrong!",
+                "fields": [
+                    {
+                        "name": "Error",
+                        "value": "{{message}}"
+                    }
+                ],
+                "color": "{{COM:colors.error}}"
             }
         },
         "channelRegexes": {

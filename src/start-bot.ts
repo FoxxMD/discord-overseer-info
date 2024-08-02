@@ -4,6 +4,8 @@ import { createRequire } from 'node:module';
 
 import { Button } from './buttons/index.js';
 import { DevCommand, HelpCommand, InfoCommand, TestCommand } from './commands/chat/index.js';
+import { MovieCommand } from './commands/chat/movie-command.js';
+import { ShowCommand } from './commands/chat/show-command.js';
 import {
     ChatCommandMetadata,
     Command,
@@ -57,15 +59,17 @@ async function start(): Promise<void> {
     let commands: Command[] = [
         // Chat Commands
         new DevCommand(),
-        new HelpCommand(),
-        new InfoCommand(),
-        new TestCommand(),
+        // new HelpCommand(),
+        // new InfoCommand(),
+        // new TestCommand(),
+        new MovieCommand(),
+        new ShowCommand(),
 
         // Message Context Commands
-        new ViewDateSent(),
+        // new ViewDateSent(),
 
         // User Context Commands
-        new ViewDateJoined(),
+        // new ViewDateJoined(),
 
         // TODO: Add new commands here
     ];

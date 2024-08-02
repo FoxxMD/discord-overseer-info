@@ -36,6 +36,7 @@
     },
     "dependencies": {
         "@discordjs/rest": "2.3.0",
+        "@hey-api/client-fetch": "^0.2.0",
         "class-transformer": "0.5.1",
         "class-validator": "0.14.1",
         "cron-parser": "^4.9.0",

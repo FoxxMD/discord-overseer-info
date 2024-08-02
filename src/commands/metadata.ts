@@ -1,4 +1,5 @@
 import {
+    ApplicationCommandOptionType,
     ApplicationCommandType,
     PermissionFlagsBits,
     PermissionsBitField,
@@ -30,7 +31,7 @@ export const ChatCommandMetadata: {
             },
         ],
     },
-    HELP: {
+/*    HELP: {
         type: ApplicationCommandType.ChatInput,
         name: Lang.getRef('chatCommands.help', Language.Default),
         name_localizations: Lang.getRefLocalizationMap('chatCommands.help'),
@@ -68,29 +69,55 @@ export const ChatCommandMetadata: {
         description_localizations: Lang.getRefLocalizationMap('commandDescs.test'),
         dm_permission: true,
         default_member_permissions: undefined,
+    },*/
+    MOVIE: {
+        type: ApplicationCommandType.ChatInput,
+        name: 'movie',
+        description: 'Get info about a movie and status on Plex',
+        options: [
+            {
+                name: 'title',
+                description: 'Name of the movie to find',
+                required: true,
+                type: ApplicationCommandOptionType.String.valueOf(),
+            }
+        ]
     },
+    SHOW: {
+        type: ApplicationCommandType.ChatInput,
+        name: 'show',
+        description: 'Get info about a show and status on Plex',
+        options: [
+            {
+                name: 'title',
+                description: 'Name of the show to find',
+                required: true,
+                type: ApplicationCommandOptionType.String.valueOf(),
+            }
+        ]
+    }
 };
 
 export const MessageCommandMetadata: {
     [command: string]: RESTPostAPIContextMenuApplicationCommandsJSONBody;
 } = {
-    VIEW_DATE_SENT: {
+/*    VIEW_DATE_SENT: {
         type: ApplicationCommandType.Message,
         name: Lang.getRef('messageCommands.viewDateSent', Language.Default),
         name_localizations: Lang.getRefLocalizationMap('messageCommands.viewDateSent'),
         default_member_permissions: undefined,
         dm_permission: true,
-    },
+    },*/
 };
 
 export const UserCommandMetadata: {
     [command: string]: RESTPostAPIContextMenuApplicationCommandsJSONBody;
 } = {
-    VIEW_DATE_JOINED: {
+/*    VIEW_DATE_JOINED: {
         type: ApplicationCommandType.User,
         name: Lang.getRef('userCommands.viewDateJoined', Language.Default),
         name_localizations: Lang.getRefLocalizationMap('userCommands.viewDateJoined'),
         default_member_permissions: undefined,
         dm_permission: true,
-    },
+    },*/
 };

@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  discord-overseer-info:
+    image: foxxmd/discord-overseer-info
+    restart: unless-stopped
+    volumes:
+      - ./config:/app/config

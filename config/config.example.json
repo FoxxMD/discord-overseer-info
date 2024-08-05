@@ -6,9 +6,7 @@
         "intents": [
             "Guilds",
             "GuildMessages",
-            "GuildMessageReactions",
-            "DirectMessages",
-            "DirectMessageReactions"
+            "GuildMessageReactions"
         ],
         "partials": ["Message", "Channel", "Reaction"],
         "caches": {

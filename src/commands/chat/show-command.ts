@@ -13,7 +13,7 @@ import type {
 } from '../../overseer-client/types.gen.js';
 import { getSearch, getMovieByMovieId, getTvByTvId } from '../../overseer-client/services.gen.js';
 import { Lang } from '../../services/index.js';
-import { InteractionUtils } from '../../utils/index.js';
+import { FormatUtils, InteractionUtils } from '../../utils/index.js';
 import { Command, CommandDeferType } from '../index.js';
 
 const require = createRequire(import.meta.url);
@@ -95,8 +95,9 @@ export class ShowCommand implements Command {
             {
                 name: 'Release Details',
                 value: `
-                * **${show.data.status}**
-                * First Air Date: ${show.data.firstAirDate !== null && show.data.firstAirDate !== undefined ? time(new Date(show.data.firstAirDate)) : 'Unknown'}`
+                **${show.data.status}**
+                
+                * First Air Date: ${show.data.firstAirDate !== null && show.data.firstAirDate !== undefined ? FormatUtils.releaseISOToDate(show.data.firstAirDate) : 'Unknown'}`
             },
             {
                 name: 'Is it on Plex Yet?',

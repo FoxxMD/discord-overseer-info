@@ -1,6 +1,10 @@
 import { ApplicationCommand, Guild, Locale } from 'discord.js';
 import { filesize } from 'filesize';
 import { Duration } from 'luxon';
+import dayjs from 'dayjs';
+import utcPlugin from 'dayjs/plugin/utc.js';
+
+dayjs.extend(utcPlugin);
 
 export class FormatUtils {
     public static roleMention(guild: Guild, discordId: string): string {
@@ -53,5 +57,9 @@ export class FormatUtils {
 
     public static fileSize(bytes: number): string {
         return filesize(bytes, { output: 'string', pad: true, round: 2 });
+    }
+
+    public static releaseISOToDate(isoStr: string): string {
+        return dayjs(isoStr).utc().format('MMMM D, YYYY')
     }
 }

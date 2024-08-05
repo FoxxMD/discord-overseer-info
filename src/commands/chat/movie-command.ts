@@ -1,11 +1,10 @@
 import { ChatInputCommandInteraction, EmbedBuilder, PermissionsString, time } from 'discord.js';
 import { createRequire } from 'node:module';
-
 import { InfoOption } from '../../enums/index.js';
 import { Language } from '../../models/enum-helpers/index.js';
 import { EventData } from '../../models/internal-models.js';
 import { Lang } from '../../services/index.js';
-import { InteractionUtils } from '../../utils/index.js';
+import { FormatUtils, InteractionUtils } from '../../utils/index.js';
 import { Command, CommandDeferType } from '../index.js';
 import { createClient, createConfig, type Options } from '@hey-api/client-fetch';
 import type { GetDiscoverMoviesError, GetDiscoverMoviesData, MovieResult } from '../../overseer-client/types.gen.js';
@@ -147,11 +146,11 @@ export class MovieCommand implements Command {
                 release = releaseDates.find(x => x.type === rTypes.types[1]);
             }
             if (release !== undefined) {
-                releaseDeets.push([`${rTypes.name} (${release.iso_639_1})`, time(new Date(release.release_date))])
+                releaseDeets.push([`${rTypes.name} (${release.iso_639_1})`, FormatUtils.releaseISOToDate(release.release_date)])
             } else {
                 const allTypeReleases = allReleaseDates.filter(x => rTypes.types.includes(x.type));
                 if (allTypeReleases.length > 0) {
-                    releaseDeets.push([`${releaseType[rTypes.types[0]]} (${allTypeReleases[0].iso_639_1})`, time(new Date(allTypeReleases[0].release_date))])
+                    releaseDeets.push([`${releaseType[rTypes.types[0]]} (${allTypeReleases[0].iso_639_1})`, FormatUtils.releaseISOToDate(allTypeReleases[0].release_date)])
                 } else {
                     releaseDeets.push([releaseType[rTypes.types[0]], 'No Info']);
                 }
@@ -163,7 +162,7 @@ export class MovieCommand implements Command {
                 name: 'Release Details',
                 value: `
                 \n
-                Currently -> **${movie.data.status}**
+                **${movie.data.status}**
                 
                 ${releaseDeets.map(x => `* ${x[0]} : ${x[1]}`).join('\n')} `
             },
